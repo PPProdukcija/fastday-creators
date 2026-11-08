@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fastday Creator Program</title>
+<meta name="description" content="Fastday Creator Program: your own discount code, $7 for every yearly purchase, paid monthly via Payoneer.">
+<meta property="og:title" content="Fastday Creator Program">
+<meta property="og:description" content="Your own discount code. $7 for every yearly purchase, paid monthly. First sale paid right away.">
+<meta property="og:image" content="https://ppprodukcija.github.io/fastday-creators/og.jpg">
+<meta property="og:url" content="https://ppprodukcija.github.io/fastday-creators/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Fastday v4: cream, coral, charcoal; glass cards; Inter display + Newsreader italic accents. One column, phone-first. */
+  --bg: #F9F8F4;
+  --surface: rgba(255,255,255,.84);
+  --ink: #1C1C1E;
+  --ink-soft: #6E6E73;
+  --coral: #FF6B4A;
+  --coral-soft: #FFEDE7;
+  --line: rgba(28,28,30,.08);
+  --display: "Inter", -apple-system, "Segoe UI", sans-serif;
+  --accent: "Newsreader", Georgia, serif;
+  --body: "Inter", -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E0E10; --surface: rgba(28,28,30,.88); --ink: #F5F5F7; --ink-soft: #A1A1A6;
+    --coral: #FF8A70; --coral-soft: #3A221C; --line: rgba(255,255,255,.1); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E0E10; --surface: rgba(28,28,30,.88); --ink: #F5F5F7; --ink-soft: #A1A1A6;
+  --coral: #FF8A70; --coral-soft: #3A221C; --line: rgba(255,255,255,.1); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 var(--body); }
+main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; display: grid; gap: 44px; }
+h1, h2 { font-family: var(--display); font-weight: 700; letter-spacing: -.035em; line-height: 1.08; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(32px, 6.4vw, 46px); }
+h1 em, h2 em { font-family: var(--accent); font-style: italic; font-weight: 500; letter-spacing: -.01em; color: var(--coral); }
+h2 { font-size: 24px; }
+p { margin: 0; max-width: 65ch; }
+.muted { color: var(--ink-soft); }
+header { display: grid; gap: 14px; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand img { width: 64px; height: 64px; border-radius: 15px; box-shadow: 0 0 0 .5px var(--line), 0 6px 16px rgba(255,107,74,.25); }
+.brand span { font-weight: 700; }
+.brand small { display: block; color: var(--ink-soft); font-weight: 500; }
+section { display: grid; gap: 16px; }
+.points { display: grid; gap: 10px; padding: 0; margin: 0; list-style: none; }
+.points li { padding-left: 18px; position: relative; max-width: 65ch; }
+.points li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+.shots { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; }
+.shots figure { margin: 0; flex: 0 0 168px; scroll-snap-align: start; }
+.shots img { width: 100%; border-radius: 20px; box-shadow: 0 0 0 .5px var(--line), 0 8px 24px rgba(28,28,30,.08); display: block; }
+.steps { counter-reset: s; display: grid; gap: 12px; padding: 0; margin: 0; list-style: none; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+.steps li::before { content: counter(s); width: 34px; height: 34px; border-radius: 50%; background: var(--coral-soft); color: var(--coral); font-weight: 700; display: grid; place-items: center; }
+.earn { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.card { background: var(--surface); border: 1px solid rgba(255,255,255,.7); border-radius: 24px; padding: 20px; box-shadow: 0 0 0 .5px var(--line), 0 8px 24px rgba(28,28,30,.08), 0 24px 56px rgba(28,28,30,.06); -webkit-backdrop-filter: blur(24px) saturate(180%); backdrop-filter: blur(24px) saturate(180%); display: grid; gap: 6px; }
+.card .big { font-family: var(--display); font-weight: 700; letter-spacing: -.03em; font-size: 40px; color: var(--coral); line-height: 1; font-variant-numeric: tabular-nums; }
+.card .label { font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
+.note { background: var(--coral-soft); border-radius: 20px; padding: 14px 16px; }
+.rules { display: grid; gap: 8px; padding-left: 20px; margin: 0; }
+.cta { display: inline-block; background: var(--coral); color: #fff; text-decoration: none; font-weight: 700; padding: 12px 20px; border-radius: 999px; }
+.cta:focus-visible, a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+a { color: var(--coral); }
+footer { border-top: 1px solid var(--line); padding-top: 20px; display: grid; gap: 8px; }
+@media (max-width: 480px) { .earn { grid-template-columns: 1fr; } .shots figure { flex-basis: 150px; } }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <div class="brand">
+    <img src="icon.png" alt="Fastday app icon">
+    <div><span>Fastday: Weekly Fasting Plan</span><small>Creator Program · iPhone</small></div>
+  </div>
+  <h1>Earn from every follower who starts Fastday <em>with your code.</em></h1>
+  <p class="muted">Hi, I'm Pavle, a videographer and solo developer from Novi Sad, Serbia. I built Fastday and I'm looking for a few creators to grow it with. This page explains exactly what the app does, what you get and how you get paid.</p>
+</header>
+
+<section>
+  <h2>What Fastday does</h2>
+  <ul class="points">
+    <li><strong>A different eating window for each day of the week.</strong> Busy Monday, slow Sunday, a dinner with friends on Friday: the plan follows the week people actually live, instead of forcing 16:8 every day.</li>
+    <li><strong>The fast lives on the Lock Screen.</strong> One tap starts it, and a Live Activity and the Dynamic Island show the timer without opening the app.</li>
+    <li><strong>No account, no sign-up.</strong> Data stays on the phone. Water and weight logs, fasting phases and streaks are built in.</li>
+  </ul>
+</section>
+
+<section aria-label="Fastday in 30 seconds">
+  <video src="explainer.mp4" poster="poster.jpg" controls playsinline muted style="width:100%;max-width:360px;border-radius:28px;box-shadow:0 0 0 .5px var(--line),0 12px 32px rgba(28,28,30,.12);display:block;margin:0 auto"></video>
+</section>
+
+<section aria-label="App screenshots">
+  <div class="shots">
+    <figure><img src="shot1.jpg" alt="Weekly schedule with a different eating window each day"></figure>
+    <figure><img src="shot2.jpg" alt="Fasting timer on the iPhone Lock Screen"></figure>
+    <figure><img src="shot3.jpg" alt="Live fasting timer in the app"></figure>
+    <figure><img src="shot4.jpg" alt="Fasting phases explained"></figure>
+    <figure><img src="shot5.jpg" alt="Progress and streaks"></figure>
+    <figure><img src="shot6.jpg" alt="No account, data stays on device"></figure>
+  </div>
+  <p class="muted">Swipe for more. <a href="https://apps.apple.com/app/id6815950697">See Fastday on the App Store</a></p>
+</section>
+
+<section>
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><div>I send you a code for <strong>a free year of Premium</strong>. Try the app first. You don't have to post anything.</div></li>
+    <li><div>If you like it, you get <strong>two personal codes</strong> (yearly and weekly plan) and a personal link for each. The link opens the App Store with your discount already applied.</div></li>
+    <li><div>You put the link in your bio or pinned comment and mention your code in videos. People who already installed the app can type the code under "Have a code?" in the app.</div></li>
+    <li><div>Apple counts every purchase made with your code. You earn on each one, and I send you Apple's numbers every month.</div></li>
+  </ol>
+</section>
+
+<section>
+  <h2>What your followers save, <em>and what you earn.</em></h2>
+  <div class="earn">
+    <div class="card">
+      <span class="label">Yearly code</span>
+      <span class="big">$7</span>
+      <span>for you, per purchase</span>
+      <span class="muted">Your followers pay $27.99 for the first year instead of $39.99.</span>
+    </div>
+    <div class="card">
+      <span class="label">Weekly code</span>
+      <span class="big">$0.80</span>
+      <span>for you, per purchase</span>
+      <span class="muted">Your followers pay $2.99 a week for the first 4 weeks instead of $4.99.</span>
+    </div>
+  </div>
+  <p class="muted">Prices are in US dollars; Apple shows the local equivalent in other countries. That's roughly 40% of what I receive after Apple's fee. The yearly code is where the money is.</p>
+</section>
+
+<section>
+  <h2>How and when <em>you get paid.</em></h2>
+  <ul class="points">
+    <li><strong>Your very first sale is paid right away</strong>, as soon as it shows up in App Store Connect.</li>
+    <li>After that, each month is paid by the end of the second month after it. Example: November sales are paid by January 31. That's when Apple has paid me for that month.</li>
+    <li>Payment goes through <strong>Payoneer</strong>, to your Payoneer account or straight to your bank account. Minimum payout is $20; smaller amounts roll over to the next month.</li>
+    <li>Every month you get a statement: a screenshot of your code's purchases from App Store Connect, your commission, any refund deduction and the amount sent.</li>
+  </ul>
+  <p class="note">Honest limit: for now you see the numbers through my monthly statement, not in your own dashboard. They are Apple's numbers, unchanged.</p>
+</section>
+
+<section>
+  <h2>The fair-play rules</h2>
+  <ol class="rules">
+    <li>Codes work only for people who have never subscribed to Fastday. That's Apple's rule, and it makes every purchase you earn on a real new customer.</li>
+    <li>Refunds: each month's commission is reduced by that month's refund rate for the same plan, as shown in my App Store financial report. Refunds that arrive later come off the next payout.</li>
+    <li>Label your posts as sponsored: turn on TikTok's commercial content toggle and add #ad.</li>
+    <li>No weight-loss promises, before/after body content, medical claims or content aimed at anyone under 18. I review your first video before it goes up.</li>
+    <li>Please don't post your codes on coupon or deal sites, and never offer anything in exchange for App Store ratings or reviews.</li>
+    <li>Either of us can stop with 14 days' notice. Anything you've already earned is still paid.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Ideas that fit Fastday</h2>
+  <ul class="points">
+    <li>"My fasting schedule is different every day. Here's why."</li>
+    <li>"I don't fast on Sundays. On purpose."</li>
+    <li>"The fasting timer that lives on my Lock Screen."</li>
+    <li>"Plan my week with me": Sunday evening, coffee, set up the week in 30 seconds.</li>
+  </ul>
+  <p class="muted">Your own style always beats a script. I can also send you B-roll of the app and screen recordings so a video takes you less time.</p>
+</section>
+
+<footer>
+  <p><strong>Interested?</strong> Just reply to my message and I'll send your free Premium code.</p>
+  <p class="muted">Pavle Pejić · Fastday · Novi Sad, Serbia</p>
+  <p><a class="cta" href="https://apps.apple.com/app/id6815950697">Fastday on the App Store</a></p>
+</footer>
+
+</main>
+</body>
+</html>
